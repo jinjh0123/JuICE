@@ -1,10 +1,10 @@
 {
-  "name": "bbg-web",
+  "name": "juice-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "rm -rf dist && parcel index.html --port 3000 --open",
-    "build": "rm -rf dist && rm -rf .parcel-cache && rm -rf .cache && parcel build index.html ./public/*.pdf --public-url https://jinjh0123.github.io/BBG",
+    "build": "rm -rf dist && rm -rf .parcel-cache && rm -rf .cache && parcel build index.html ./public/*.pdf --public-url https://jinjh0123.github.io/JuICE",
     "predeploy": "npm run build",
     "deploy": "gh-pages -f -d dist"
   },
@@ -37,7 +37,7 @@
     "buffer": "^6.0.3",
     "constants-browserify": "^1.0.0",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "^16.2.6",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",

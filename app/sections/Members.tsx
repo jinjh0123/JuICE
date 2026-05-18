@@ -8,23 +8,38 @@ const members = [
         name: "Jiho Jin",
         affiliation: "KAIST",
         // role: "PhD candidate",
-        // thumb: require("../../public/images/thumb.jpg"),
+        // thumb: require("../../public/images/members/jiho_jin.jpeg"),
         web: "https://jinjh0123.github.io/",
         // note: "*Research intern at NAVER AI Lab"
     },
     {
-        name: "Woosung Kang",
-        affiliation: "KAIST",
-        // role: "PhD candidate",
-        // thumb: require("../../public/images/thumb.jpg"),
-        // web: ""
-    },
-    {
         name: "Junho Myung",
         affiliation: "KAIST",
-        // role: "Associate Professor",
-        // thumb: require("../../public/images/thumb.jpg"),
         web: "https://junhomyung.github.io/"
+    },
+    {
+        name: "Juhyun Oh",
+        affiliation: "KAIST",
+        web: "https://juhyunohh.github.io/"
+    },
+    {
+        name: "Junyeong Park",
+        affiliation: "KAIST",
+        web: "https://jjjunyeong.github.io/"
+    },
+    {
+        name: "Rifki Afina Putri",
+        affiliation: "Universitas Gadjah Mada",
+        web: "https://rifkiaputri.github.io/"
+    },
+    {
+        name: "Sunipa Dev",
+        affiliation: "Google",
+        web: "https://sunipa.github.io/"
+    },
+    {
+        name: "Vinodkumar Prabhakaran",
+        affiliation: "Google"
     },
     {
         name: "Alice Oh",
@@ -93,7 +108,7 @@ export const Members = () => {
         }
         </div>
         <div className="mt-8 flex items-center gap-6 gap-y-8 flex-wrap">
-            <img className="w-[200px]" alt="NAVER logo" src={require("../../public/images/logos/kaist_logo.png")} width={1728} height={552}/>
+            <img className="w-[200px]" alt="KAIST logo" src={require("../../public/images/kaist_logo.png")} width={1728} height={552}/>
             <div className="uilab-logo">
                 <div className="logo-drawing-container" style={styles.logodrawingcontainer}>
                     <div className="logo-drawing" ref={logoRef} style={styles.logodrawing}></div>
