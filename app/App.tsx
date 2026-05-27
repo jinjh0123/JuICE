@@ -28,8 +28,8 @@ export function App() {
         <Abstract/>
       </div>
       {/* <Dataset/>
-      <Evaluation/>
-      <Cite/> */}
+      <Evaluation/> */}
+      <Cite/>
       {/* <Acknowledgments/> */}
       <Members/>
     </main><Footer/></>

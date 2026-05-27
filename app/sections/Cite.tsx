@@ -1,17 +1,13 @@
 import { Section } from "../components/Section"
 
-const bibTex = '@inproceedings{jin-etal-2025-social,<br/>\n\
-&emsp;&emsp;title = "Social Bias Benchmark for Generation: A Comparison of Generation and {QA}-Based Evaluations",<br/>\n\
-&emsp;&emsp;author = "Jin, Jiho  and  Kang, Woosung  and  Myung, Junho  and  Oh, Alice",<br/>\n\
-&emsp;&emsp;booktitle = "Findings of the Association for Computational Linguistics: ACL 2025",<br/>\n\
-&emsp;&emsp;month = jul,<br/>\n\
-&emsp;&emsp;year = "2025",<br/>\n\
-&emsp;&emsp;address = "Vienna, Austria",<br/>\n\
-&emsp;&emsp;publisher = "Association for Computational Linguistics",<br/>\n\
-&emsp;&emsp;url = "https://aclanthology.org/2025.findings-acl.585/",<br/>\n\
-&emsp;&emsp;doi = "10.18653/v1/2025.findings-acl.585",<br/>\n\
-&emsp;&emsp;pages = "11215--11228",<br/>\n\
-&emsp;&emsp;ISBN = "979-8-89176-256-5"<br/>\n\
+const bibTex = '@misc{jin-etal-2026-juice,<br/>\n\
+&emsp;&emsp;title={JuICE: A Benchmark for Evaluating LLM-Judge in Identifying Cultural Errors},<br/>\n\
+&emsp;&emsp;author={Jiho Jin and Junho Myung and Juhyun Oh and Junyeong Park and Rifki Afina Putri and Sunipa Dev and Vinodkumar Prabhakaran and Alice Oh},<br/>\n\
+&emsp;&emsp;year={2026},<br/>\n\
+&emsp;&emsp;eprint={2605.26955},<br/>\n\
+&emsp;&emsp;archivePrefix={arXiv},<br/>\n\
+&emsp;&emsp;primaryClass={cs.CL},<br/>\n\
+&emsp;&emsp;url={https://arxiv.org/abs/2605.26955},<br/>\n\
 }'
 
 
@@ -19,11 +15,10 @@ export const Cite = () => {
     return <Section title="Citing This Work">
         <div className="border-y-[1px] border-slate-400 py-3">
             <div>
-                Jiho Jin, Woosung Kang, Junho Myung, and Alice Oh.
-                2025.
-                Social Bias Benchmark for Generation: A Comparison of Generation and QA-Based Evaluations.
-                In <i>Findings of the Association for Computational Linguistics: ACL 2025</i>, pages 11215–11228, Vienna, Austria.
-                Association for Computational Linguistics.
+                Jiho Jin, Junho Myung, Juhyun Oh, Junyeong Park, Rifki Afina Putri, Sunipa Dev, Vinodkumar Prabhakaran, Alice Oh.
+                2026.
+                JuICE: A Benchmark for Evaluating LLM-Judge in Identifying Cultural Errors.
+                <i>arXiv preprint arXiv:2605.26955</i>.
             </div>
         </div>
         <div className="mt-4">
