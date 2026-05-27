@@ -1,6 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "*.pdf": ["@parcel/transformer-raw"]
+    "*.pdf": ["@parcel/transformer-raw"],
+    "app/data/*.json": ["@parcel/transformer-raw"]
   }
 }

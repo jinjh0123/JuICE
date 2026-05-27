@@ -10,10 +10,10 @@ const config: Config = {
   theme: {
     container: {
       screens: {
-        sm: '480px',
-        md: '600px',
-        lg: '728px',
-        xl: '1000px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1100px',
       }
     },
     extend: {

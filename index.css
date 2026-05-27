@@ -2,38 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: #575757;
-    --background-start-rgb: #f6f8f8;
-    --background-end-rgb: #eef3f2;
-  }
-}
-
 body {
-  color: var(--foreground-rgb);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--background-end-rgb)
-    )
-    var(--background-start-rgb);
+  color: rgb(25, 25, 25);
+  background-color: #ffffff;
 }
 
-@layer base{
+@layer base {
   body {
     @apply font-Nunito;
   }
 
   p {
-    @apply text-lg font-light;
+    @apply text-xl font-light leading-relaxed;
   }
 
   pre {
@@ -43,13 +23,12 @@ body {
 }
 
 @layer components {
-  .circle-digit{
+  .circle-digit {
     @apply rounded-full bg-white border-2 border-gray-500 w-6 h-6 text-sm font-semibold inline-block text-center items-center;
   }
 
-  .icon-label-button{
+  .icon-label-button {
     @apply flex items-center transition-transform hover:scale-110 bg-slate-500 shadow-md hover:shadow-xl rounded-full px-2 pr-4 py-2 h-11;
-    
   }
 
   .icon-label-button > span {
@@ -61,32 +40,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-
-   
 }
-
 
 .tcontainer {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  /* max-height: 300px; */
-  /* overflow-y: scroll; */
-
-  /* &::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    height: 25%;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    border-radius: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 0 5px 5px 0;
-  } */
 }
 
 table {
@@ -96,21 +55,10 @@ table {
   border-radius: 5px;
 }
 
-.sr{
-  background-color: #ffabdb;
-}
-
-.tm{
-  background-color: #ddb2ff;
-}
-
-.st{
-  background-color: #a7c0ff;
-}
-
-.nc{
-  background-color: #7fd5c1;
-}
+.sr { background-color: #ffabdb; }
+.tm { background-color: #ddb2ff; }
+.st { background-color: #a7c0ff; }
+.nc { background-color: #7fd5c1; }
 
 th {
   padding: 10px;
@@ -126,27 +74,9 @@ thead th {
 td {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.2);
-  /* color: #fff; */
   text-align: center;
 }
 
-tbody {
-  & tr:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  /* & td {
-    position: relative;
-
-    &:hover:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -9999px;
-      bottom: -9999px;
-      background-color: rgba(255, 255, 255, 0.2);
-      z-index: -1;
-    }
-  } */
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
