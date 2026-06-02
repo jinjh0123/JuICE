@@ -1,12 +1,9 @@
-# ChaCha Project Website
-
-https://naver-ai.github.io/chacha/
-
+# JuICE Project Website
 
 ## How to Run
 
 ### Prerequisite
-* Node.js (tested on 18.17.0) - Recommend to use [nvm](https://github.com/nvm-sh/nvm).
+* Node.js (tested on **23.2.0**) - Recommend to use [nvm](https://github.com/nvm-sh/nvm).
 
 ### Running Website on Development Mode
 1. Install dependencies
@@ -35,6 +32,5 @@ https://naver-ai.github.io/chacha/
    > npm run deploy
    ```
 
-
-## Author
-Young-Ho Kim (NAVER AI Lab) yghokim@younghokim.net, http://younghokim.net
+## Reference
+This website is built based on https://naver-ai.github.io/chacha/ by Young-Ho Kim (NAVER AI Lab) yghokim@younghokim.net, http://younghokim.net
