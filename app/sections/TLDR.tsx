@@ -1,4 +1,5 @@
 import { Section } from "../components/Section"
+import { ExploreIcon } from "../components/icons"
 
 export const TLDR = () => {
     return <Section title="TL;DR">
@@ -9,12 +10,9 @@ export const TLDR = () => {
             that local residents readily identify — suggesting cultural evaluation must move beyond surface-level detection.
         </p>
         <div className="mt-5">
-            <a
-                href="#explore"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-600 text-white text-sm font-medium hover:bg-teal-700 transition-colors"
-            >
-                Explore Annotations
-                <span aria-hidden>→</span>
+            <a href="#explore" className="icon-label-button w-fit bg-teal-600 pl-3 text-white">
+                <ExploreIcon size={22}/>
+                <span>Explore Annotations</span>
             </a>
         </div>
     </Section>

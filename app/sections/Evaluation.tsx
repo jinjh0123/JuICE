@@ -149,7 +149,7 @@ export const Evaluation = () => {
             ))}
           </tbody>
         </table>
-        <p className="text-xs text-gray-400 mt-2">Open-source model scores are averaged over four runs with varying prompts. See the paper for full per-language and per-category breakdowns.</p>
+        <p className="text-xs text-gray-400 mt-2">Open-source model scores are averaged over four runs. See the paper for full experimental results.</p>
       </div>
 
       {/* Category-wise recall */}

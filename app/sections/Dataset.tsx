@@ -108,7 +108,7 @@ export const Dataset = () => {
               <tr className="bg-white border-b-2 border-gray-300">
                 <th className="text-center py-2 px-3 font-bold text-gray-900">Country</th>
                 <th className="text-center py-2 px-3 font-bold text-gray-900">Language</th>
-                <th className="text-center py-2 px-3 font-bold text-gray-900">Pairs</th>
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Query-response Pairs</th>
                 <th className="text-center py-2 px-3 font-bold text-gray-900">Error Spans</th>
                 <th className="text-center py-2 px-3 font-bold text-gray-900">Thick Ratio</th>
               </tr>
