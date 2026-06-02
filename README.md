@@ -33,4 +33,4 @@
    ```
 
 ## Reference
-This website is built based on https://naver-ai.github.io/chacha/ by Young-Ho Kim (NAVER AI Lab) yghokim@younghokim.net, http://younghokim.net
+This website is built based on https://naver-ai.github.io/chacha/ (Young-Ho Kim, NAVER AI Lab, yghokim@younghokim.net, http://younghokim.net)
