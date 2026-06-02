@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Logo from 'uilab-logo.js/lib/uilab-logo'
 import kaistLogo from "../../public/images/kaist_logo.png"
+import googleLogo from "../../public/images/google_logo.png"
 
 export const Members = () => {
     const logoRef = useRef(null);
@@ -24,5 +25,6 @@ export const Members = () => {
                 USERS &amp;<br />INFORMATION
             </div>
         </div>
+        <img className="w-[120px]" alt="Google logo" src={googleLogo}/>
     </div>
 }
