@@ -83,11 +83,11 @@ function ExampleCard({ ex }: { ex: ExampleEntry }) {
       <div className="text-sm text-gray-700 leading-relaxed">
         <HighlightedText text={ex.excerpt} errors={ex.errors} />
       </div>
-      <div className="border-t border-gray-100 pt-3 flex flex-col gap-1.5">
+      <div className="border-t border-gray-100 pt-3 flex flex-col gap-3">
         {ex.errors.map((err, i) => (
-          <div key={i} className="text-xs text-gray-600 flex gap-2 items-start">
-            <CategoryBadge category={err.category} className="shrink-0 mt-0.5" />
-            <span className="leading-relaxed">{err.explanation}</span>
+          <div key={i} className="flex flex-col gap-1">
+            <CategoryBadge category={err.category} className="self-start" />
+            <span className="text-xs text-gray-600 leading-relaxed">{err.explanation}</span>
           </div>
         ))}
       </div>
@@ -100,8 +100,8 @@ export function DataExplorer() {
     <Section title="Dataset Examples">
       <p className="text-gray-600 mb-6 leading-relaxed">
         Each entry in JuICE is a query-response pair with span-level annotations marking cultural and linguistic
-        errors. Hover over a highlighted span to see the annotator's explanation. The examples below illustrate
-        how a response can be fluent and factually plausible yet culturally wrong to a local reader.
+        errors. The examples below illustrate how a response can be fluent and factually plausible yet culturally
+        wrong to a local reader.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {EXAMPLES.map((ex, i) => (

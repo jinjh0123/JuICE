@@ -2,13 +2,6 @@ import React from 'react'
 import { Section } from '../components/Section'
 import { THICK_CATEGORIES, THIN_CATEGORIES } from '../utils/spanHighlight'
 
-const STATS = [
-  { value: '1,050', label: 'query-response pairs' },
-  { value: '7,470', label: 'span-level annotations' },
-  { value: '4', label: 'countries' },
-  { value: '7', label: 'language combinations' },
-]
-
 type TaxonomyRow = {
   category: string
   type: 'thin' | 'thick'
@@ -16,56 +9,78 @@ type TaxonomyRow = {
   example: string
 }
 
-const TAXONOMY: TaxonomyRow[] = [
+const TAXONOMY_GROUPS: { group: string; rows: TaxonomyRow[] }[] = [
   {
-    category: 'Explicit Linguistic Error',
-    type: 'thin',
-    description: 'Grammatical mistakes, spelling errors, and other rule-based surface violations.',
-    example: 'Dangling modifiers, comma splices, incorrect verb tense.',
+    group: 'Linguistic Errors',
+    rows: [
+      {
+        category: 'Explicit Linguistic Error',
+        type: 'thin',
+        description: 'Grammatical mistakes, spelling errors, and other rule-based surface violations.',
+        example: 'Dangling modifiers, comma splices, incorrect verb tense.',
+      },
+      {
+        category: 'Implicit Linguistic Error',
+        type: 'thick',
+        description: 'Failures of tone, register, or sociolinguistic appropriateness that are not rule-based.',
+        example: 'Using British "queue" in an American-English context.',
+      },
+    ],
   },
   {
-    category: 'Cultural Inaccuracy',
-    type: 'thin',
-    description: 'Objectively false, verifiable factual claims about a culture.',
-    example: 'A wrong historical date, a non-existent landmark, a misattributed tradition.',
-  },
-  {
-    category: 'Implicit Linguistic Error',
-    type: 'thick',
-    description: 'Failures of tone, register, or sociolinguistic appropriateness that are not rule-based.',
-    example: 'Using British "queue" in an American-English context.',
-  },
-  {
-    category: 'Cultural Incoherence',
-    type: 'thick',
-    description: 'Culturally incongruous elements that clash within a specific local context.',
-    example: 'A martabak vendor during an Indonesian morning commute (martabak is an evening food).',
-  },
-  {
-    category: 'Cultural Specificity Error',
-    type: 'thick',
-    description: 'Over-generalizing or misrepresenting the boundaries of a cultural concept.',
-    example: 'Using "outer boroughs" to describe a generic American city (a New York-specific term).',
-  },
-  {
-    category: 'Cultural Connotation Error',
-    type: 'thick',
-    description: 'Mishandling the symbolic or emotional associations of a cultural element.',
-    example: 'Describing jasmine as a symbol of peace in Indonesia, where it connotes funerals.',
-  },
-  {
-    category: 'Cultural Missingness',
-    type: 'thick',
-    description: 'Absent critical cultural grounding that a local would expect to see.',
-    example: 'A story set in Bangladesh that omits the cultural role of tea stalls.',
+    group: 'Cultural Errors',
+    rows: [
+      {
+        category: 'Cultural Inaccuracy',
+        type: 'thin',
+        description: 'Objectively false, verifiable factual claims about a culture.',
+        example: 'A wrong historical date, a non-existent landmark, a misattributed tradition.',
+      },
+      {
+        category: 'Cultural Incoherence',
+        type: 'thick',
+        description: 'Culturally incongruous elements that clash within a specific local context.',
+        example: 'A martabak vendor during an Indonesian morning commute (martabak is an evening food).',
+      },
+      {
+        category: 'Cultural Specificity Error',
+        type: 'thick',
+        description: 'Over-generalizing or misrepresenting the boundaries of a cultural concept.',
+        example: 'Using "outer boroughs" to describe a generic American city (a New York-specific term).',
+      },
+      {
+        category: 'Cultural Connotation Error',
+        type: 'thick',
+        description: 'Mishandling the symbolic or emotional associations of a cultural element.',
+        example: 'Describing jasmine as a symbol of peace in Indonesia, where it connotes funerals.',
+      },
+      {
+        category: 'Cultural Missingness',
+        type: 'thick',
+        description: 'Absent critical cultural grounding that a local would expect to see.',
+        example: 'A story set in Bangladesh that omits the cultural role of tea stalls.',
+      },
+    ],
   },
 ]
 
-const COUNTRIES = [
-  { name: 'United States', languages: ['English'], tasks: 150 },
-  { name: 'South Korea', languages: ['Korean', 'English'], tasks: 300 },
-  { name: 'Indonesia', languages: ['Indonesian', 'English'], tasks: 300 },
-  { name: 'Bangladesh', languages: ['Bengali', 'English'], tasks: 300 },
+type CountryRow = {
+  country: string
+  rowspan: number
+  language: string
+  pairs: number
+  spans: number
+  thickRatio: number
+}
+
+const COUNTRIES: CountryRow[] = [
+  { country: 'United States',  rowspan: 1, language: 'English',    pairs: 150, spans: 661,   thickRatio: 50.2 },
+  { country: 'South Korea',    rowspan: 2, language: 'Korean',     pairs: 150, spans: 1107,  thickRatio: 41.7 },
+  { country: '',               rowspan: 0, language: 'English',    pairs: 150, spans: 1009,  thickRatio: 40.2 },
+  { country: 'Indonesia',      rowspan: 2, language: 'Indonesian', pairs: 150, spans: 1237,  thickRatio: 38.3 },
+  { country: '',               rowspan: 0, language: 'English',    pairs: 150, spans: 907,   thickRatio: 45.1 },
+  { country: 'Bangladesh',     rowspan: 2, language: 'Bengali',    pairs: 150, spans: 1734,  thickRatio: 35.6 },
+  { country: '',               rowspan: 0, language: 'English',    pairs: 150, spans: 815,   thickRatio: 40.2 },
 ]
 
 export const Dataset = () => {
@@ -79,34 +94,41 @@ export const Dataset = () => {
         story generation, creative ideation, and how-to advice.
       </p>
 
-      {/* Stats bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-        {STATS.map(s => (
-          <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm">
-            <div className="text-3xl font-bold text-teal-600">{s.value}</div>
-            <div className="text-xs text-gray-500 mt-1">{s.label}</div>
-          </div>
-        ))}
-      </div>
-
       {/* Coverage table */}
       <div className="mb-10">
-        <h3 className="text-base font-semibold text-gray-700 mb-3">Geographic & Linguistic Coverage</h3>
-        <div className="overflow-x-auto">
+        <h3 className="text-base font-semibold text-gray-800 mb-1">Geographic & Linguistic Coverage</h3>
+        <p className="text-sm text-gray-500 mb-3">
+          US responses are English-only; all other countries include both the local language and English.
+          Thick Ratio is the proportion of annotations labeled as thick errors — culturally nuanced errors
+          that require interpretive, situated judgment rather than surface-level verification.
+        </p>
+        <div className="max-w-xl mx-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-2 pr-4 font-semibold text-gray-600">Country</th>
-                <th className="text-left py-2 pr-4 font-semibold text-gray-600">Languages</th>
-                <th className="text-right py-2 font-semibold text-gray-600">Query-response pairs</th>
+              <tr className="bg-white border-b-2 border-gray-300">
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Country</th>
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Language</th>
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Pairs</th>
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Error Spans</th>
+                <th className="text-center py-2 px-3 font-bold text-gray-900">Thick Ratio</th>
               </tr>
             </thead>
             <tbody>
-              {COUNTRIES.map(c => (
-                <tr key={c.name} className="border-b border-gray-100">
-                  <td className="py-2 pr-4 text-gray-700 font-medium">{c.name}</td>
-                  <td className="py-2 pr-4 text-gray-600">{c.languages.join(', ')}</td>
-                  <td className="py-2 text-right text-gray-600">{c.tasks}</td>
+              {COUNTRIES.map((c, i) => (
+                <tr key={i} className="border-b border-gray-100">
+                  {c.rowspan > 0 && (
+                    <td rowSpan={c.rowspan} className="py-2 px-3 text-gray-700 font-medium align-middle border-r border-gray-100">
+                      {c.country}
+                    </td>
+                  )}
+                  <td className="py-2 px-3 text-gray-600 text-center">{c.language}</td>
+                  <td className="py-2 px-3 text-gray-600 text-center">{c.pairs}</td>
+                  <td className="py-2 px-3 text-gray-600 text-center">{c.spans.toLocaleString()}</td>
+                  <td className="py-2 px-3 text-center">
+                    <span className={`text-xs font-semibold ${c.thickRatio >= 45 ? 'text-teal-600' : 'text-gray-500'}`}>
+                      {c.thickRatio}%
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -116,45 +138,47 @@ export const Dataset = () => {
 
       {/* Taxonomy table */}
       <div>
-        <h3 className="text-base font-semibold text-gray-700 mb-1">Error Taxonomy</h3>
+        <h3 className="text-base font-semibold text-gray-800 mb-1">Error Taxonomy</h3>
         <p className="text-sm text-gray-500 mb-3">
           JuICE operationalizes a <em>thick vs. thin</em> distinction. Thin categories involve
           surface-level, verifiable errors; thick categories require interpretive, culturally situated judgment.
         </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-2 pr-3 font-semibold text-gray-600 w-[180px]">Category</th>
-                <th className="text-left py-2 pr-3 font-semibold text-gray-600 w-16">Type</th>
-                <th className="text-left py-2 pr-3 font-semibold text-gray-600">Description</th>
-                <th className="text-left py-2 font-semibold text-gray-600 hidden md:table-cell">Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              {TAXONOMY.map(row => (
-                <tr key={row.category} className="border-b border-gray-100 align-top">
-                  <td className="py-2.5 pr-3">
-                    <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
-                      row.type === 'thin'
-                        ? 'bg-gray-100 text-gray-600'
-                        : 'bg-teal-50 text-teal-700'
-                    }`}>
-                      {row.category}
-                    </span>
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="bg-gray-50 border-b-2 border-gray-300">
+              <th className="text-center py-2 px-3 font-bold text-gray-900 w-[200px]">Category</th>
+              <th className="text-center py-2 px-3 font-bold text-gray-900 w-14">Type</th>
+              <th className="text-center py-2 px-3 font-bold text-gray-900">Description</th>
+              <th className="text-center py-2 px-3 font-bold text-gray-900 hidden md:table-cell">Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TAXONOMY_GROUPS.map((group, gi) => (
+              <React.Fragment key={group.group}>
+                <tr className={gi > 0 ? 'border-t-2 border-gray-200' : ''}>
+                  <td
+                    colSpan={4}
+                    className="py-1.5 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider bg-gray-50"
+                  >
+                    {group.group}
                   </td>
-                  <td className="py-2.5 pr-3">
-                    <span className={`text-xs font-semibold ${row.type === 'thin' ? 'text-gray-400' : 'text-teal-600'}`}>
-                      {row.type === 'thin' ? 'Thin' : 'Thick'}
-                    </span>
-                  </td>
-                  <td className="py-2.5 pr-3 text-gray-600 leading-relaxed">{row.description}</td>
-                  <td className="py-2.5 text-gray-500 leading-relaxed hidden md:table-cell">{row.example}</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                {group.rows.map(row => (
+                  <tr key={row.category} className="border-b border-gray-100 align-top">
+                    <td className="py-2.5 px-3 text-gray-700 font-medium">{row.category}</td>
+                    <td className="py-2.5 px-3 text-center">
+                      <span className={`text-xs font-semibold ${row.type === 'thin' ? 'text-gray-400' : 'text-teal-600'}`}>
+                        {row.type === 'thin' ? 'Thin' : 'Thick'}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-3 text-gray-600 leading-relaxed">{row.description}</td>
+                    <td className="py-2.5 px-3 text-gray-500 leading-relaxed hidden md:table-cell">{row.example}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
       </div>
     </Section>
   )

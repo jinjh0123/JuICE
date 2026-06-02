@@ -8,6 +8,7 @@ import { Evaluation } from "./sections/Evaluation";
 import { TLDR } from "./sections/TLDR";
 import { Figure } from "./sections/Figure";
 import { DataExplorer } from "./sections/DataExplorer";
+import { DataConstruction } from "./sections/DataConstruction";
 import { DataPage } from "./pages/DataPage";
 import lemonadeImg from "../public/images/lemonade.png";
 import { ArxivIcon, GithubIcon, HuggingfaceIcon } from "./components/icons";
@@ -66,6 +67,7 @@ function MainPage() {
         <TLDR/>
         <Figure/>
         <Abstract/>
+        <DataConstruction/>
         <Dataset/>
         <DataExplorer/>
         <Evaluation/>
